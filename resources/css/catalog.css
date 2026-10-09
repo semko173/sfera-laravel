@@ -1,0 +1,655 @@
+/* ==========================================
+   1. ШАПКА И ЛИПКИЕ СЛОИ (Z-INDEX)
+   ========================================== */
+header,
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Шапка строго поверх абсолютно всех элементов */
+    background-color: #ffffff;
+    /* Плотный фон, чтобы контент не просвечивал */
+}
+
+
+/* ==========================================
+   2. КОНТЕЙНЕР КАТАЛОГА И ФИЛЬТРЫ
+   ========================================== */
+.products__content {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+
+/* Левая панель фильтров */
+.products__filters {
+    flex: 0 0 280px;
+    width: 280px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+
+    /* Фиксация под шапкой */
+    position: sticky;
+    top: 102px;
+    /* Ровно под шапкой высотой 102px */
+    z-index: 100;
+    /* Ниже шапки (100 < 1000), при прокрутке уйдет ПОД неё */
+}
+
+.products__filters-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.products__filter {
+    margin-bottom: 24px;
+}
+
+.products__filter:last-child {
+    margin-bottom: 0;
+}
+
+.products__filter-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+/* Чекбоксы и списки */
+.products__filter label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.products__filter input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #000;
+    cursor: pointer;
+}
+
+/* Поля ввода цены */
+.products__filter-price-inputs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.products__filter-price-inputs input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.products__filter-price-inputs input:focus {
+    border-color: #000;
+}
+
+.btn-filter {
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   3. ПРАВАЯ ЧАСТЬ (СЕТКА ТОВАРОВ)
+   ========================================== */
+.products__main {
+    flex: 1;
+    min-width: 0;
+    /* Защита от распора сетки flex-элементом */
+}
+
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 20px;
+}
+
+@media (min-width: 1200px) {
+    .products__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* ==========================================
+   4. КАРТОЧКА ТОВАРА
+   ========================================== */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border-color: #d1d5db;
+}
+
+/* Блок фото */
+.product-card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.product-card__image img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover .product-card__image img {
+    transform: scale(1.04);
+}
+
+/* Контентная часть */
+.product-card__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-card__category {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #9ca3af;
+    margin-bottom: 4px;
+}
+
+.product-card__title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #111827;
+    margin-bottom: 12px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 38px;
+}
+
+/* Подвал карточки (Цена + Кнопка) */
+.product-card__footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.product-card__price-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card__price-old {
+    font-size: 12px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.product-card__price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1;
+}
+
+.product-card__cart-btn {
+    width: 36px;
+    height: 36px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+    color: #111827;
+}
+
+.product-card:hover .product-card__cart-btn {
+    background: #000000;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   5. АДАПТИВ (МОБИЛЬНЫЕ УСТРОЙСТВА)
+   ========================================== */
+@media (max-width: 992px) {
+    .products__content {
+        flex-direction: column;
+    }
+
+    .products__filters {
+        width: 100%;
+        flex: 1 1 100%;
+        position: static;
+        /* На мобильных отключаем sticky */
+    }
+}
+
+/* ==========================================
+   1. ШАПКА (Стресс-фиксация верхнего слоя)
+   ========================================== */
+header.floating_header,
+.header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    /* Шапка поверх абсолютно всего */
+    background-color: #ffffff !important;
+    /* ОБЯЗАТЕЛЬНО: плотный белый фон, чтобы фильтры не просвечивали */
+}
+
+/* ==========================================
+   2. КОНТЕЙНЕР КОНТЕНТА (Опускаем весь main ниже шапки)
+   ========================================== */
+main.main,
+.products,
+.products__content {
+    position: relative;
+    z-index: 1;
+    /* Гарантирует, что всё содержимое страницы находится ПОД шапкой */
+}
+
+/* ==========================================
+   3. ПАНЕЛЬ ФИЛЬТРОВ
+   ========================================== */
+aside.products__filters {
+    position: sticky;
+    top: 102px;
+    /* Прилипает ровно под шапкой высотой 102px */
+    z-index: 10;
+    /* Низкий слой (10 < 1000): уходит ПОД белую шапку при прокрутке к подвалу */
+}
+
+/* 1. Липкая панель с собственным скроллом */
+.products__filters {
+    position: sticky;
+    top: 20px;
+    /* Отступ от верха при прокрутке */
+    max-height: calc(100vh - 40px);
+    /* Высота не больше экрана */
+    overflow-y: auto;
+    /* Появляется собственный скролл, если фильтров много */
+    padding-right: 10px;
+    /* Отступ справа, чтобы скроллбар не налегал на контент */
+}
+
+/* Красивый аккуратный скроллбар для WebKit (Chrome, Edge, Safari) */
+.products__filters::-webkit-scrollbar {
+    width: 4px;
+}
+
+.products__filters::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+.products__filters::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 2. Стили для сворачиваемых блоков */
+.products__filter {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.products__filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.products__filter-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Анимация вращения стрелочки */
+.products__filter-arrow {
+    transition: transform 0.25s ease;
+}
+
+/* Контент фильтра */
+.products__filter-body {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Состояние "Свернуто" */
+.products__filter.is-closed .products__filter-body {
+    display: none;
+}
+
+.products__filter.is-closed .products__filter-arrow {
+    transform: rotate(-90deg);
+    /* Поворачиваем стрелку вбок при закрытии */
+}
+
+/* 1. Контейнер панели */
+.products__filters {
+    position: sticky;
+    /* Учитываем высоту шапки (если шапка липкая и высотой, например, 80px — поставьте top: 90px) */
+    top: 20px;
+    /* Уменьшаем максимальную высоту, чтобы панель гарантированно влазила в экран */
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding-right: 8px;
+    padding-bottom: 20px;
+    /* Запас отступа снизу */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Форма внутри панели */
+.products__filters form {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* 3. Делаем кнопку «Применить» всегда видимой внизу панели */
+.btn-filter {
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    /* Прижимает кнопку к низу */
+    padding: 12px 20px;
+    background-color: #000;
+    /* Цвет вашей кнопки */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+
+    /* Белая подложка и тень сверху, чтобы фильтры красиво уходили под кнопку */
+    box-shadow: 0 -12px 15px rgba(255, 255, 255, 0.95);
+}
+
+/* ==========================================
+   ШАПКА (один блок, без дублей и !important)
+   ========================================== */
+header,
+.main-header,
+.header,
+header.floating_header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+}
+
+/* ==========================================
+   КОНТЕЙНЕР КАТАЛОГА
+   ========================================== */
+.products__content {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================
+   ПАНЕЛЬ ФИЛЬТРОВ — фиксированная колонка,
+   ничего из неё не выходит наружу
+   ========================================== */
+.products__filters {
+    flex: 0 0 280px;
+    width: 280px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+
+    position: sticky;
+    top: 122px;
+    /* шапка 102px + зазор 20px */
+    max-height: calc(100vh - 142px);
+    /* 122px сверху + 20px снизу */
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* скролл — только у формы внутри */
+    z-index: 100;
+    /* ниже шапки (100 < 1000) */
+}
+
+.products__filters-title {
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* ==========================================
+   ФОРМА — вот она и есть независимый скролл
+   ========================================== */
+.products__filters form {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-right: 8px;
+    margin-right: -8px;
+    /* компенсация padding, чтобы контент не съезжал */
+
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+.products__filters form::-webkit-scrollbar {
+    width: 4px;
+}
+
+.products__filters form::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+.products__filters form::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ==========================================
+   БЛОКИ ФИЛЬТРОВ
+   ========================================== */
+.products__filter {
+    flex-shrink: 0;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.products__filter:last-child {
+    border-bottom: none;
+}
+
+.products__filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.products__filter-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6b7280;
+}
+
+.products__filter-arrow {
+    transition: transform 0.25s ease;
+}
+
+.products__filter-body {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.products__filter.is-closed .products__filter-body {
+    display: none;
+}
+
+.products__filter.is-closed .products__filter-arrow {
+    transform: rotate(-90deg);
+}
+
+.products__filter label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    user-select: none;
+}
+
+.products__filter input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #000;
+    cursor: pointer;
+}
+
+.products__filter-price-inputs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.products__filter-price-inputs input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.products__filter-price-inputs input:focus {
+    border-color: #000;
+}
+
+/* ==========================================
+   КНОПКА — всегда видна внизу панели
+   ========================================== */
+.btn-filter {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+
+    flex-shrink: 0;
+    margin-top: auto;
+    /* прижимает к низу, если места много */
+
+    padding: 12px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+
+    /* белая подложка сверху — фильтры аккуратно уходят под кнопку */
+    box-shadow: 0 -12px 15px rgba(255, 255, 255, 0.95);
+}
+
+/* ==========================================
+   АДАПТИВ ПАНЕЛИ
+   ========================================== */
+@media (max-width: 992px) {
+    .products__content {
+        flex-direction: column;
+    }
+
+    .products__filters {
+        width: 100%;
+        flex: 1 1 100%;
+        position: static;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .products__filters form {
+        overflow: visible;
+        max-height: none;
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    .btn-filter {
+        position: static;
+        box-shadow: none;
+        margin-top: 16px;
+    }
+}

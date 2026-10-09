@@ -1,0 +1,340 @@
+.main {
+    background: #fff;
+}
+
+/* ===== HERO (баннер) ===== */
+
+.hero {
+    margin-bottom: 40px;
+}
+
+.hero__slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 500px;
+}
+
+.hero__slides {
+    height: 100%;
+}
+
+.hero__slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.hero__slide--active {
+    display: block;
+}
+
+.hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero__content {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    color: #fff;
+    max-width: 500px;
+    z-index: 2;
+}
+
+.hero__slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* кнопки */
+.hero__prev,
+.hero__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.hero__prev {
+    left: 10px;
+}
+
+.hero__next {
+    right: 10px;
+}
+
+/* ===== PRODUCTS ===== */
+
+.products {
+    margin-bottom: 50px;
+}
+
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* кнопка */
+.products__more {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #49A4DC;
+    color: #49A4DC;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #49A4DC;
+    color: #fff;
+}
+
+/* Общие отступы секций */
+.section {
+    padding: 48px 0;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #111827;
+}
+
+/* 1. Первый экран (Hero) */
+.hero-block {
+    background: #f9fafb;
+    padding: 60px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.hero-block__container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-block__badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.hero-block__title {
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+.hero-block__subtitle {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+.hero-block__actions {
+    display: flex;
+    gap: 16px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn--primary {
+    background: #111827;
+    color: #ffffff;
+}
+
+.btn--primary:hover {
+    background: #374151;
+}
+
+.btn--outline {
+    background: transparent;
+    color: #111827;
+    border: 1px solid #d1d5db;
+}
+
+.btn--outline:hover {
+    background: #f3f4f6;
+}
+
+/* 2. Сетка категорий */
+.categories__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.category-card {
+    background: #f3f4f6;
+    padding: 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: flex-end;
+    min-height: 120px;
+}
+
+.category-card:hover {
+    background: #e5e7eb;
+    transform: translateY(-2px);
+}
+
+.category-card__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* 3. Блок преимуществ */
+.features {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+}
+
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.feature-item {
+    text-align: center;
+}
+
+.feature-item__icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.feature-item__title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.feature-item__desc {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* На главной 5 колонок, чтобы размер карточки 1 в 1 совпадал с каталогом */
+.products__grid--home {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+/* Ограничиваем только сетку хитов по ширине каталога */
+.products--home .container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.products__grid--home {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Сетка для главной страницы: 5 карточек в ряд */
+.products__grid--home {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+/* Адаптив под разные экраны */
+@media (max-width: 1440px) {
+    .products__grid--home {
+        grid-template-columns: repeat(4, 1fr);
+        /* На ноутбуках переходим на 4 */
+    }
+}
+
+@media (max-width: 1024px) {
+    .products__grid--home {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .products__grid--home {
+        grid-template-columns: repeat(2, 1fr);
+        /* На мобильных 2 в ряд */
+        gap: 12px;
+    }
+}
+
+.hero-block {
+    background: #ecedef;
+    /* Сливается с белым фоном любых фото */
+    padding: 60px 0;
+    border-bottom: 1px solid #ebe5e56c;
+}
+
+/* Правая карточка под фото */
+.hero-block__media {
+    width: 100%;
+    height: 380px;
+    /* Зафиксированная высота блока */
+    border-radius: 20px;
+    /* Красивые скругления */
+    overflow: hidden;
+    /* Обрезаем все, что выходит за рамки */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    /* Легкая премиальная тень */
+}
+
+/* Фотография внутри карточки */
+.hero-block__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Растягивает фото на ВСЮ ширину и высоту карточки */
+    object-position: top center;
+    /* Держит фокус на лице и очках, не срезая голову */
+    display: block;
+}
