@@ -2,7 +2,7 @@
 {{-- Подключаем отдельный CSS-файл каталога --}}
 @push('styles')
     <!-- Стили только для главной страницы -->
-    @vite(['resources/css/catalog.css'])
+    <link rel="stylesheet" href="{{ asset('assets/sfera/css/catalog.css') }}">
 @endpush
 
 {{-- 3. ОБЯЗАТЕЛЬНО: Открываем секцию контента --}}
@@ -17,11 +17,11 @@
 
                     <!-- Боковая панель фильтров -->
                     <aside class="products__filters">
-    <form action="{{ route('catalog.index') }}" method="GET" id="filter-form">
+    <form action="{{ route('product.index') }}" method="GET" id="filter-form">
         <div class="products__filters-top">
             <h3 class="products__filters-title">Фильтры</h3>
             @if(request()->query())
-                <a href="{{ route('catalog.index') }}" class="products__filters-reset">Сбросить</a>
+                <a href="{{ route('product.index') }}" class="products__filters-reset">Сбросить</a>
             @endif
         </div>
 

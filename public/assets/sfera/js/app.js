@@ -1,0 +1,3 @@
+import '../../../../resources/js/bootstrap';
+
+

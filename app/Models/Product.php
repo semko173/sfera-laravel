@@ -1,22 +1,30 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    // 1. Указываем точное имя таблицы из базы Сферы (например, 'goods' или 'sfera_products')
-    protected $table = 'products';
+    protected $fillable = ['name', 'price', 'old_price', 'short_description', 'full_description', 'image', 'brand_id', 'category_id', 'is_active'];
 
-    // 2. Указываем имя первичного ключа (если в легаси БД это не 'id', а например 'product_id' или 'id_product')
-    protected $primaryKey = 'id';
+    protected $casts = [
+        'price'     => 'integer',
+        'old_price' => 'integer',
+        'is_active' => 'boolean',
+    ];
 
-    // 3. Отключаем автоматические метки времени created_at / updated_at
-    // Это КРИТИЧНО для старых таблиц, иначе Eloquent выдаст ошибку при запросах
-    public $timestamps = false;
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function productAttributes()
-{
-    return $this->hasMany(ProductAttribute::class);
-}
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
 }

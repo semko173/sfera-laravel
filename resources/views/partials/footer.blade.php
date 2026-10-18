@@ -36,7 +36,7 @@
             <ul class="footer_links" style="width:290px;">
                 <li><b>Информация</b></li>
                 <li><a href="/about/">О компании</a></li>
-                <li><a href="/guarantee/">Гарантии</a></li>
+                <li><a href="{{ route('guarantees') }}">Гарантии</a></li>
             </ul>
         </div>
 

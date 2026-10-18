@@ -1213,18 +1213,7 @@ a {
     text-decoration: none;
 }
 
-.header-badge {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-    background-color: #e74c3c;
-    color: #fff;
-    font-size: 11px;
-    font-weight: bold;
-    border-radius: 50%;
-    padding: 2px 6px;
-    line-height: 1;
-}
+
 
 /* Делаем шапку "липкой" */
 header,
@@ -1464,32 +1453,7 @@ header,
     display: block;
 }
 
-.header .header-badge {
-    position: absolute;
 
-    top: -2px;
-    right: -1px;
-
-    min-width: 18px;
-    height: 18px;
-
-    padding: 0 4px;
-
-    box-sizing: border-box;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background: #ef5b5b;
-    color: #fff;
-
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 18px;
-}
 
 
 /* ---------------------------------------------------------
@@ -1785,4 +1749,55 @@ header,
     gap: 30px;
 
     list-style: none;
+}
+
+/* Родитель счётчика должен быть relative */
+.header-user-actions a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Сам счётчик */
+.header-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    background: #18c1f4;
+    /* под твой жёлтый акцент */
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.header-action-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.product-card__fav-form {
+    position: absolute;
+    top: 8px;
+    /* подставь свои значения — как было у .product-card__fav-btn */
+    right: 8px;
+    z-index: 2;
+    margin: 0;
+}
+
+.product-card__fav-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

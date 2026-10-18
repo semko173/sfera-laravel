@@ -1,0 +1,540 @@
+/* ==========================================================================
+   Profile Layout & Sidebar
+   ========================================================================== */
+
+.profile-page {
+    padding: 40px 0 50px;
+    background-color: #ffffff;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px;
+    border-right: 1px solid #edf0f3;
+}
+
+
+/* --------------------------------------------------------------------------
+   Блок информации о пользователе
+   -------------------------------------------------------------------------- */
+
+.profile-user-header {
+    padding: 0 0 22px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile-user-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.profile-user-label {
+    width: 75px;
+    flex-shrink: 0;
+
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.profile-user-value {
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.profile-user-value--name {
+    color: #0f172a;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+
+/* --------------------------------------------------------------------------
+   Навигация сайдбара
+   -------------------------------------------------------------------------- */
+
+.profile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-nav__link {
+    display: flex;
+    align-items: center;
+
+    min-height: 38px;
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.profile-nav__link:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.profile-nav__link.active {
+    background-color: #eff6ff;
+    color: #4b9fdf;
+    font-weight: 600;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+
+    min-height: 38px;
+    padding: 8px 12px;
+    margin-top: 8px;
+
+    border-radius: 7px;
+
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition: background-color 0.15s ease;
+}
+
+.logout-btn:hover {
+    background-color: #fef2f2;
+}
+
+
+/* --------------------------------------------------------------------------
+   Основной контент
+   -------------------------------------------------------------------------- */
+
+.profile-content {
+    min-width: 0;
+    padding-top: 2px;
+}
+
+.profile-section {
+    display: none;
+}
+
+.profile-section.active {
+    display: block;
+}
+
+.profile-section__title {
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    color: #111827;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+
+/* --------------------------------------------------------------------------
+   Данные профиля
+   -------------------------------------------------------------------------- */
+
+.profile-data-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.data-value {
+    color: #111827;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.data-action-link {
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition: color 0.15s ease;
+}
+
+.data-action-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+
+/* --------------------------------------------------------------------------
+   Форма настроек
+   -------------------------------------------------------------------------- */
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 520px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    color: #374151;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 9px 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+
+    background-color: #ffffff;
+    color: #111827;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-input::placeholder {
+    color: #9ca3af;
+}
+
+.form-actions {
+    margin-top: 8px;
+}
+
+.btn-primary {
+    padding: 9px 18px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #2563eb;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* --------------------------------------------------------------------------
+   Рецепты
+   -------------------------------------------------------------------------- */
+
+.profile-section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-section__header .profile-section__title {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.btn-outline-sm {
+    padding: 6px 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+
+    background: transparent;
+    color: #374151;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.btn-outline-sm:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+    color: #111827;
+}
+
+.prescription-block {
+    padding: 20px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    background: #ffffff;
+}
+
+.prescription-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+.prescription-title {
+    color: #111827;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.prescription-date {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.prescription-table-wrapper {
+    overflow-x: auto;
+}
+
+.prescription-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 14px;
+    text-align: left;
+}
+
+.prescription-table th {
+    padding: 10px 12px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    background-color: #f9fafb;
+    color: #6b7280;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.prescription-table td {
+    padding: 12px;
+
+    border-bottom: 1px solid #f3f4f6;
+
+    color: #111827;
+}
+
+.prescription-table tr:last-child td {
+    border-bottom: none;
+}
+
+.pd-cell {
+    vertical-align: middle;
+
+    border-left: 1px solid #f3f4f6;
+
+    background-color: #fdfdfd;
+
+    text-align: center;
+    font-weight: 600;
+}
+
+
+/* --------------------------------------------------------------------------
+   Адаптивность
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .profile-page {
+        padding: 25px 0 35px;
+    }
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .profile-sidebar {
+        padding-right: 0;
+        padding-bottom: 24px;
+        border-right: none;
+        border-bottom: 1px solid #edf0f3;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Блок информации о пользователе
+   -------------------------------------------------------------------------- */
+
+.profile-user-header {
+    padding: 0 0 22px;
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-user-name {
+    margin: 0 0 5px;
+
+    color: #0f172a;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.profile-user-email,
+.profile-user-phone {
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.profile-user-phone {
+    color: #4b5563;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 44px;
+    align-items: start;
+}
+
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-right: 28px;
+    border-right: 1px solid #edf0f3;
+}
+
+.profile-content {
+    min-width: 0;
+    padding-top: 0;
+}
+
+.profile-empty {
+    padding-top: 4px;
+}
+
+.profile-empty__text {
+    margin: 0 0 18px;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.profile-empty__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+    padding: 8px 16px;
+
+    border-radius: 6px;
+
+    background-color: #2563eb;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: background-color .15s ease;
+}
+
+.profile-empty__button:hover {
+    background-color: #1d4ed8;
+}

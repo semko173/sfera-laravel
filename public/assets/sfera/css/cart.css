@@ -1,0 +1,670 @@
+/* ==========================================================================
+   Страница Корзины и Избранного
+   ========================================================================== */
+
+.page-basket,
+.page-favorites {
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #111;
+}
+
+/* --- Заголовок страницы Избранного с кнопками --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.favorites-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- Макет корзины (Сетка с сайдбаром) --- */
+.basket-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- Список товаров в корзине --- */
+.basket-items {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.basket-items__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #777;
+}
+
+.basket-clear-link,
+.favorites-clear-link {
+    color: #888;
+    text-decoration: underline;
+    font-size: 13px;
+    transition: color 0.2s ease;
+}
+
+.basket-clear-link:hover,
+.favorites-clear-link:hover {
+    color: #e74c3c;
+}
+
+/* --- Элемент товара в корзине --- */
+.basket-item {
+    display: grid;
+    grid-template-columns: 90px 1fr auto 120px auto;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.basket-item:last-child {
+    border-bottom: none;
+}
+
+/* Изображение */
+.basket-item__image {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.basket-item__image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Название и цена */
+.basket-item__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.basket-item__title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #222;
+    text-decoration: none;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.basket-item__title:hover {
+    color: #0066cc;
+}
+
+.basket-item__price-unit {
+    font-size: 13px;
+    color: #888;
+}
+
+/* Изменение количества (+ / -) */
+.basket-item__qty {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: #e9e9e9;
+}
+
+.qty-value {
+    width: 36px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Стоимость товара */
+.basket-item__sum {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Действия (Сердечко / Удаление) */
+.basket-item__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.basket-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: #888;
+    background: #f5f5f5;
+    transition: all 0.2s ease;
+}
+
+.basket-action-btn:hover {
+    background: #ffebe9;
+    color: #e74c3c;
+}
+
+/* --- Сайдбар (Детали заказа) --- */
+.basket-summary {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 24px;
+    position: sticky;
+    top: 100px;
+}
+
+.basket-summary__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.basket-summary__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.basket-summary__row.total {
+    font-size: 18px;
+    color: #111;
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd;
+    margin-bottom: 24px;
+}
+
+.total-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #111;
+}
+
+/* --- Кнопки действия --- */
+.btn-checkout {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    background: #111;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.btn-checkout:hover {
+    background: #333;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #e2e2e2;
+}
+
+.btn-add-to-cart {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #111;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.btn-add-to-cart:hover {
+    background: #333;
+}
+
+/* --- Пустое состояние --- */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+.empty-state__text {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Адаптивность (Мобильная версия)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .basket-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .basket-summary {
+        position: static;
+    }
+}
+
+@media (max-width: 640px) {
+    .basket-item {
+        grid-template-columns: 70px 1fr;
+        grid-template-areas:
+            "img info"
+            "qty sum"
+            "actions actions";
+        gap: 12px;
+    }
+
+    .basket-item__image {
+        grid-area: img;
+        width: 70px;
+        height: 70px;
+    }
+
+    .basket-item__info {
+        grid-area: info;
+    }
+
+    .basket-item__qty {
+        grid-area: qty;
+        justify-self: start;
+    }
+
+    .basket-item__sum {
+        grid-area: sum;
+        text-align: left;
+        align-self: center;
+    }
+
+    .basket-item__actions {
+        grid-area: actions;
+        justify-content: flex-end;
+        border-top: 1px dashed #f0f0f0;
+        padding-top: 8px;
+    }
+}
+
+/* Страница корзины */
+.page-basket {
+    padding: 24px 0 60px;
+    min-height: calc(100vh - 200px);
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #0d0d0d;
+}
+
+/* Сетка: список + сайдбар */
+.basket-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Список товаров */
+.basket-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.basket-items__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+    padding: 0 20px;
+}
+
+/* Карточка товара в корзине */
+.basket-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto auto;
+    gap: 20px;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s;
+}
+
+.basket-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Картинка */
+.basket-item__image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f8f8;
+    display: block;
+}
+
+.basket-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Название и цена за штуку */
+.basket-item__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.basket-item__title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #0d0d0d;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.basket-item__title:hover {
+    color: #FBC100;
+}
+
+.basket-item__price-unit {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Количество */
+.basket-item__qty {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 4px;
+    background: #fafafa;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    color: #0d0d0d;
+    transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+    background: #f0f0f0;
+}
+
+.qty-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.qty-value {
+    min-width: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Сумма за товар */
+.basket-item__sum {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d0d0d;
+    white-space: nowrap;
+    text-align: right;
+    min-width: 100px;
+}
+
+/* Кнопка «Удалить» */
+.basket-item__actions {
+    display: flex;
+    align-items: center;
+}
+
+.basket-action-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #999;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.basket-action-btn:hover {
+    background: #fee;
+    color: #cc0033;
+}
+
+/* Сайдбар «Итого» */
+.basket-summary {
+    position: sticky;
+    top: 90px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.basket-summary__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #0d0d0d;
+}
+
+.basket-summary__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #666;
+}
+
+.basket-summary__row.total {
+    font-size: 16px;
+    color: #0d0d0d;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.basket-summary__row.total strong {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Кнопка «Оформить» */
+.btn-checkout {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    background: #FBC100;
+    color: #0d0d0d;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+.btn-checkout:hover {
+    background: #e0ad00;
+}
+
+/* Пустое состояние */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.empty-state__text {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #FBC100;
+    color: #0d0d0d;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background: #e0ad00;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .basket-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .basket-summary {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-item {
+        grid-template-columns: 80px 1fr auto;
+        grid-template-areas:
+            "image info actions"
+            "image qty sum";
+        gap: 12px;
+    }
+
+    .basket-item__image {
+        grid-area: image;
+        width: 80px;
+        height: 80px;
+    }
+
+    .basket-item__info {
+        grid-area: info;
+    }
+
+    .basket-item__qty {
+        grid-area: qty;
+        justify-self: start;
+    }
+
+    .basket-item__sum {
+        grid-area: sum;
+        font-size: 16px;
+    }
+
+    .basket-item__actions {
+        grid-area: actions;
+        justify-self: end;
+    }
+}

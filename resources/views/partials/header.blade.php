@@ -36,19 +36,19 @@
         <!-- Избранное и Корзина -->
         <div class="header-user-actions">
             <!-- Избранное -->
-            <a href="/favorites" class="header-action-btn" title="Избранное">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
+            <a href="{{ route('favorites.index') }}" class="header-action-btn js-fav-link" title="Избранное">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
 
-                {{-- Проверка сессии избранного --}}
-                @if(!empty(session('favorites')))
-                    <span class="header-badge">{{ count(session('favorites')) }}</span>
-                @endif
-            </a>
+    @php $favCount = count(session('favorites', [])); @endphp
+    <span class="header-badge js-fav-badge" @if(!$favCount) style="display: none;" @endif>
+        {{ $favCount }}
+    </span>
+</a>
 
             <!-- Корзина -->
-            <a href="/basket" class="header-action-btn header-cart-btn" title="Корзина">
+            <a href="{{ route('cart.index') }}" title="Корзина">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="9" cy="21" r="1"></circle>
                     <circle cx="20" cy="21" r="1"></circle>
@@ -57,24 +57,23 @@
 
                 {{-- Подсчет количества товаров в корзине --}}
                 @php
-                    $basket = session('basket');
-                    $cartCount = (is_array($basket) && !empty($basket)) ? array_sum($basket) : 0;
-                @endphp
+    $cartCount = array_sum(session('cart', []));
+@endphp
 
-                <span class="header-badge js-cart-badge" @if(empty($cartCount)) style="display: none;" @endif>
-                    {{ $cartCount }}
-                </span>
+<span class="header-badge js-cart-badge" @if(empty($cartCount)) style="display: none;" @endif>
+    {{ $cartCount }}
+</span>
             </a>
         </div>
 
         <!-- Профиль -->
         <div class="profile">
-            @if(session('user_id'))
-                <a href="/profile" class="profile-button">Профиль</a>
+            @auth
+                <a href="{{ route('profile.index') }}" class="profile-button">Профиль</a>
             @else
-                <a href="/auth?action=login" class="profile-button">Войти</a>
-                <a href="/auth?action=register" class="profile-button">Регистрация</a>
-            @endif
+                <a href="{{ route('login') }}" class="profile-button">Войти</a>
+                <a href="{{ route('register') }}" class="profile-button">Регистрация</a>
+            @endauth
         </div>
 
     </div>
@@ -83,7 +82,7 @@
     <nav class="main-nav">
         <div class="wrapper_content">
             <ul class="menu">
-                <li class="menu-item"><a href="{{ route('catalog.index') }}">Каталог</a></li>
+                <li class="menu-item"><a href="{{ route('product.index') }}">Каталог</a></li>
                 <li class="menu-item"><a href="/catalog?category[]=1">Солнцезащитные очки</a></li>
                 <li class="menu-item"><a href="/catalog?category[]=2">Оправы</a></li>
                 <li class="menu-item"><a href="/about">О компании</a></li>

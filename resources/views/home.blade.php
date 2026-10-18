@@ -3,8 +3,7 @@
 @section('title', 'Главная — Творческий Центр СФЕРА')
 
 @push('styles')
-    <!-- Стили только для главной страницы -->
-    @vite(['resources/css/home.css'])
+    <link rel="stylesheet" href="{{ asset('assets/sfera/css/home.css') }}">
 @endpush
 
 @section('content')
@@ -17,7 +16,7 @@
                 <h1 class="hero-block__title">Идеальная посадка и стиль для вашего зрения</h1>
                 <p class="hero-block__subtitle">Бесплатная примерка до 4 пар на дому. Подбор линз по рецепту за 24 часа.</p>
                 <div class="hero-block__actions">
-                    <a href="{{ route('catalog.index') }}" class="btn btn--primary">Перейти в каталог</a>
+                    <a href="{{ route('product.index') }}" class="btn btn--primary">Перейти в каталог</a>
                     <a href="/catalog/sun/" class="btn btn--outline">Солнцезащитные</a>
                 </div>
             </div>
@@ -53,7 +52,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Хиты продаж</h2>
-                <a href="{{ route('catalog.index') }}" class="link-more">Все товары &rarr;</a>
+                <a href="{{ route('product.index') }}" class="link-more">Все товары &rarr;</a>
             </div>
             
             <div class="products__grid products__grid--home">
