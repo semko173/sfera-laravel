@@ -6,8 +6,11 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Filament\Models\Contracts\HasName;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser, HasName
 {
     use HasFactory, Notifiable;
 
@@ -47,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    public function canAccessPanel(Panel $panel): bool
+{
+    return $this->role_id === 2;
+}
+public function getFilamentName(): string
+{
+    $name = trim(($this->first_name ?? '') . ' ' . ($this->last_name ?? ''));
+
+    return $name !== '' ? $name : ($this->email ?? 'User');
+}
 }
